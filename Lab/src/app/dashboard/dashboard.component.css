@@ -1,0 +1,47 @@
+/* Conteneur des cartes */
+.cards-container {
+  display: flex;
+  gap: 16px;           /* espace entre les cartes */
+  flex-wrap: wrap;      /* se met à la ligne si l'écran est trop petit */
+  justify-content: space-between; /* espacement homogène */
+  margin-bottom: 32px;  /* espace entre les cartes et le graphique */
+}
+
+/* Style des cartes */
+.cards-container mat-card {
+  flex: 1 1 150px;      /* largeur flexible minimale 150px */
+  text-align: center;   /* centrer le contenu */
+  border-radius: 12px;  /* coins arrondis */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* ombre douce */
+  padding: 16px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cards-container mat-card:hover {
+  transform: translateY(-5px); /* léger effet hover */
+}
+
+/* Style du contenu des cartes (nombre) */
+.cards-container mat-card mat-card-content {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 8px;
+  color: #3f51b5; /* couleur accentuée */
+}
+
+/* Conteneur du graphique */
+.chart-wrapper {
+  width: 100%;
+  max-width: 900px;   /* largeur maximale du graphique */
+  margin: 0 auto;     /* centrer horizontalement */
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Assure que le canvas prend toute la largeur disponible */
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: 400px !important; /* hauteur fixe, modifiable */
+}

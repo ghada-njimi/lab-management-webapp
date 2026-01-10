@@ -1,0 +1,21 @@
+.tools-container {
+  padding: 20px;
+}
+
+.tools-container h2 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.tools-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.tools-list {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 300px;
+}

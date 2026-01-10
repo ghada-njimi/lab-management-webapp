@@ -1,0 +1,334 @@
+/* Thème Angular Material bleu */
+/* Thème Angular Material bleu moderne */
+:root {
+  --primary-blue: #2196f3; /* Bleu plus clair et moderne */
+  --primary-blue-dark: #1976d2; /* Un peu plus foncé pour les accents */
+  --primary-blue-light: #bbdefb;
+  --primary-blue-lighter: #e3f2fd;
+  --accent-color: #ff4081;
+  --warn-color: #f44336;
+  --background-color: #f8fafc; /* Gris très clair */
+  --text-white: #ffffff;
+  --text-light: rgba(255, 255, 255, 0.95);
+  --text-lighter: rgba(255, 255, 255, 0.8);
+  --divider-light: rgba(255, 255, 255, 0.25);
+  --shadow-light: rgba(0, 0, 0, 0.08);
+}
+
+/* ... le reste de votre CSS reste inchangé ... */
+/* Container principal */
+.sidenav-container {
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+/* Sidebar - TOUT EN BLEU */
+.sidenav {
+  width: 250px;
+  background-color: var(--primary-blue);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* En-tête du sidebar - BLEU */
+.sidenav-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--divider-light);
+  background-color: var(--primary-blue-dark);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  color: var(--text-white);
+}
+
+.app-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-white);
+}
+
+/* Menu de navigation - BLEU */
+.nav-menu {
+  padding: 16px 0;
+  background-color: var(--primary-blue);
+}
+
+.nav-menu a {
+  margin: 4px 8px;
+  border-radius: 4px;
+  height: 48px;
+  color: var(--text-light);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-white);
+}
+
+.nav-menu a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+  font-weight: 500;
+  border-left: 4px solid white;
+}
+
+.nav-menu a.active .menu-icon {
+  color: var(--text-white);
+}
+
+.menu-icon {
+  margin: 0 16px;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: var(--text-lighter);
+}
+
+.menu-text {
+  font-size: 14px;
+  font-weight: 400;
+  flex: 1;
+}
+
+/* Footer du sidebar - BLEU */
+.sidenav-footer {
+  padding: 16px;
+  border-top: 1px solid var(--divider-light);
+  background-color: var(--primary-blue-dark);
+  text-align: center;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-lighter);
+  font-weight: 300;
+}
+
+/* Header principal - BLEU */
+.main-header {
+  height: 64px;
+  background-color: var(--primary-blue);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.menu-button {
+  color: var(--text-white);
+  margin-right: 20px;
+}
+
+.menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-title {
+  flex: 1;
+}
+
+.app-title h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-white);
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-button {
+  color: var(--text-white);
+}
+
+.user-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Contenu principal */
+.main-content {
+  padding: 24px;
+  min-height: calc(100vh - 64px - 60px); /* Hauteur - header - footer */
+  background-color: var(--background-color);
+  overflow-y: auto;
+}
+
+/* Footer - BLEU */
+.main-footer {
+  height: 60px;
+  background-color: var(--primary-blue);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--divider-light);
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content span {
+  font-size: 13px;
+  color: var(--text-lighter);
+  font-weight: 300;
+}
+
+/* Overlay pour mobile */
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 280px;
+  }
+  
+  .main-header {
+    height: 56px;
+    padding: 0 16px;
+  }
+  
+  .app-title h1 {
+    font-size: 18px;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+  
+  .main-footer {
+    padding: 0 16px;
+    height: 50px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+  
+  .footer-content span {
+    font-size: 11px;
+  }
+}
+
+/* Animation pour le sidebar */
+.sidenav {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar pour le contenu */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Suppression des effets de transparence */
+::ng-deep .mat-drawer-inner-container {
+  background-color: var(--primary-blue) !important;
+}
+
+::ng-deep .mat-list-base {
+  background-color: var(--primary-blue) !important;
+}
+/* Ajoutez ces règles pour éliminer les effets de transparence */
+
+/* Forcer le sidenav à être complètement opaque */
+.sidenav {
+  background-color: var(--primary-blue) !important;
+  border: none !important;
+}
+
+/* Conteneur interne du sidenav */
+.mat-drawer-inner-container {
+  background-color: var(--primary-blue) !important;
+  border: none !important;
+}
+
+/* Éliminer tout effet de transparence sur le menu */
+.nav-menu {
+  background-color: var(--primary-blue) !important;
+  background: var(--primary-blue) !important;
+}
+
+/* Assurer que les éléments de liste sont opaques */
+.mat-list-item {
+  background-color: transparent !important;
+}
+
+/* Éliminer les bordures ou fonds semi-transparents */
+.mat-nav-list {
+  background-color: var(--primary-blue) !important;
+}
+
+/* Corriger l'overlay mobile */
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* S'assurer que le header et footer du sidenav sont opaques */
+.sidenav-header {
+  background-color: var(--primary-blue-dark) !important;
+  background: var(--primary-blue-dark) !important;
+}
+
+.sidenav-footer {
+  background-color: var(--primary-blue-dark) !important;
+  background: var(--primary-blue-dark) !important;
+}
+
+/* Si le problème persiste, ajoutez ces règles supplémentaires */
+:host ::ng-deep .sidenav {
+  background-color: var(--primary-blue) !important;
+}
+
+:host ::ng-deep .mat-drawer-inner-container {
+  background-color: var(--primary-blue) !important;
+}
+
+/* Option alternative plus agressive si nécessaire */
+.sidenav, 
+.sidenav *:not(.menu-text):not(.app-name):not(.footer-text):not(mat-icon) {
+  background-color: var(--primary-blue) !important;
+  background-image: none !important;
+}
+mat-sidenav.sidenav {
+  background-color: #065fb8 !important;
+  background-image: none !important;
+  opacity: 1 !important;
+}

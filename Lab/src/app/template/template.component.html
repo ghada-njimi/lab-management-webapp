@@ -1,0 +1,94 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- Sidebar en bleu -->
+  <mat-sidenav #drawer mode="over" position="start" [opened]="sidenavOpened" class="sidenav">
+    
+    <!-- Logo en bleu -->
+    <div class="sidenav-header">
+      <div class="logo-container">
+        <mat-icon class="app-icon">science</mat-icon>
+        <h2 class="app-name">LabManager</h2>
+      </div>
+    </div>
+    
+    <!-- Menu en bleu - CORRIGÉ AVEC TOUTES LES ROUTES -->
+    <mat-nav-list class="nav-menu">
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active" (click)="onNavLinkClick()">
+        <mat-icon class="menu-icon">dashboard</mat-icon>
+        <span class="menu-text">Tableau de bord</span>
+      </a>
+      
+      <a mat-list-item routerLink="/members" routerLinkActive="active" (click)="onNavLinkClick()">
+        <mat-icon class="menu-icon">people</mat-icon>
+        <span class="menu-text">Membres</span>
+      </a>
+      
+      <!-- NOUVEAU : Outils -->
+      <a mat-list-item routerLink="/tools" routerLinkActive="active" (click)="onNavLinkClick()">
+        <mat-icon class="menu-icon">build</mat-icon>
+        <span class="menu-text">Outils</span>
+      </a>
+      
+      <!-- NOUVEAU : Publications -->
+      <a mat-list-item routerLink="/publications" routerLinkActive="active" (click)="onNavLinkClick()">
+        <mat-icon class="menu-icon">description</mat-icon>
+        <span class="menu-text">Publications</span>
+      </a>
+      
+      <!-- Déjà existant : Événements -->
+      <a mat-list-item routerLink="/events" routerLinkActive="active" (click)="onNavLinkClick()">
+        <mat-icon class="menu-icon">event</mat-icon>
+        <span class="menu-text">Événements</span>
+      </a>
+    </mat-nav-list>
+
+    <!-- Footer du sidebar en bleu -->
+    <div class="sidenav-footer">
+      <p class="footer-text">© 2024 Laboratoire de Recherche</p>
+    </div>
+
+  </mat-sidenav>
+
+  <!-- Contenu principal -->
+  <mat-sidenav-content class="sidenav-content">
+    
+    <!-- Header en bleu -->
+    <header class="main-header">
+      <!-- Bouton menu -->
+      <button mat-icon-button (click)="toggleSidenav()" class="menu-button" aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      
+      <!-- Titre de l'application -->
+      <div class="app-title">
+        <h1>{{currentPageTitle}}</h1>
+      </div>
+      
+      <!-- Actions utilisateur -->
+      <div class="user-actions">
+        <button mat-icon-button class="user-button" matTooltip="Mon compte" aria-label="Mon compte">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        
+        <button mat-icon-button class="user-button" (click)="logout()" matTooltip="Déconnexion" aria-label="Déconnexion">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+    </header>
+
+    <!-- Contenu des pages -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+
+    <!-- Footer en bleu -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <span>Système de Gestion de Laboratoire - LabManager v1.0</span>
+        <span>© 2024 Tous droits réservés</span>
+      </div>
+    </footer>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
