@@ -1,0 +1,5 @@
+package com.evenement.config;
+
+public class RestConfiguration {
+
+}
