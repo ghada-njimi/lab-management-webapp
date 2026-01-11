@@ -14,21 +14,39 @@ export class PublicationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // CRUD de base
+  // // CRUD de base (avec auteurs avant)
+  // getAllPublications(): Observable<Publication[]> {
+  //   return this.httpClient.get<any>(this.PUBLICATION_API).pipe(
+  //     map(response => {
+  //       console.log('Réponse publications:', response);
+  //       if (response._embedded && response._embedded.publications) {
+  //         return response._embedded.publications;
+  //       }
+  //       if (Array.isArray(response)) {
+  //         return response;
+  //       }
+  //       return [];
+  //     })
+  //   );
+  // }
+
+  //getAllPublications modifié
   getAllPublications(): Observable<Publication[]> {
-    return this.httpClient.get<any>(this.PUBLICATION_API).pipe(
-      map(response => {
-        console.log('Réponse publications:', response);
-        if (response._embedded && response._embedded.publications) {
-          return response._embedded.publications;
-        }
-        if (Array.isArray(response)) {
-          return response;
-        }
-        return [];
-      })
-    );
-  }
+  return this.httpClient.get<any>(this.PUBLICATION_API).pipe(
+    map(response => {
+      const pubs = response._embedded?.publications || response || [];
+      return pubs.map((p: any) => ({
+        id: p.id,
+        titre: p.titre,
+        type: p.type,
+        dateApparition: p.date,  // map backend date → frontend dateApparition
+        lien: p.lien,
+        source: p.sourcePdf       // map backend sourcePdf → frontend source
+      }));
+    })
+  );
+}
+
 
   savePublication(publication: Publication): Observable<Publication> {
     return this.httpClient.post<Publication>(this.PUBLICATION_API, publication);
