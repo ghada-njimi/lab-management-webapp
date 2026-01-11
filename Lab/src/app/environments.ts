@@ -1,9 +1,9 @@
- export const firebaseConfig = {
-  apiKey: "AIzaSyBTvAgc4ueTHP9CrJAF2WKaysz7aX8Y4Us",
-  authDomain: "labapp-61155.firebaseapp.com",
-  projectId: "labapp-61155",
-  storageBucket: "labapp-61155.firebasestorage.app",
-  messagingSenderId: "279204493116",
-  appId: "1:279204493116:web:6360e6bf603b26965e1039",
-  measurementId: "G-XFQNGZERDD"
+export const firebaseConfig = {
+  apiKey: "AIzaSyCobYbEHuUmF0DpkXRD6e4B1ArPHCm5dHQ",
+  authDomain: "labproject-fdf63.firebaseapp.com",
+  projectId: "labproject-fdf63",
+  storageBucket: "labproject-fdf63.firebasestorage.app",
+  messagingSenderId: "820232176248",
+  appId: "1:820232176248:web:e6bcc656a9a767a49b238d",
+  measurementId: "G-DD36SCYSBN"
 };
