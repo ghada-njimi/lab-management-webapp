@@ -1,6 +1,6 @@
 package com.publication;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,13 +27,14 @@ public class PublicationServiceApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("\n========== INITIALISATION DES PUBLICATIONS ==========\n");
         
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
+        // Nettoyage préalable (optionnel, pour éviter les doublons au redémarrage)
+        publicationRepository.deleteAll();
+
         // Articles de journal
         Publication pub1 = Publication.builder()
                 .type("article de journal")
                 .titre("An approach for testing SOA systems")
-                .dateApparition(sdf.parse("2023-01-15"))
+                .dateApparition(LocalDate.parse("2023-01-15")) // Utilisation de LocalDate
                 .lien("https://doi.org/10.1234/article1")
                 .sourcePdf("articles/soa_testing_2023.pdf")
                 .build();
@@ -42,7 +43,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub2 = Publication.builder()
                 .type("article de journal")
                 .titre("Machine Learning Applications in Software Engineering")
-                .dateApparition(sdf.parse("2023-06-20"))
+                .dateApparition(LocalDate.parse("2023-06-20"))
                 .lien("https://doi.org/10.1234/article2")
                 .sourcePdf("articles/ml_software_eng.pdf")
                 .build();
@@ -51,7 +52,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub3 = Publication.builder()
                 .type("article de journal")
                 .titre("Cloud Computing Security Challenges")
-                .dateApparition(sdf.parse("2024-02-10"))
+                .dateApparition(LocalDate.parse("2024-02-10"))
                 .lien("https://doi.org/10.1234/article3")
                 .sourcePdf("articles/cloud_security.pdf")
                 .build();
@@ -61,7 +62,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub4 = Publication.builder()
                 .type("manifestation")
                 .titre("International Conference on Software Architecture")
-                .dateApparition(sdf.parse("2023-09-15"))
+                .dateApparition(LocalDate.parse("2023-09-15"))
                 .lien("https://conference.org/icsa2023")
                 .sourcePdf("conferences/icsa_2023.pdf")
                 .build();
@@ -70,7 +71,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub5 = Publication.builder()
                 .type("manifestation")
                 .titre("Workshop on Microservices Architecture")
-                .dateApparition(sdf.parse("2024-03-25"))
+                .dateApparition(LocalDate.parse("2024-03-25"))
                 .lien("https://workshop.org/microservices")
                 .sourcePdf("conferences/microservices_workshop.pdf")
                 .build();
@@ -80,7 +81,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub6 = Publication.builder()
                 .type("chapitre de livre")
                 .titre("Design Patterns for Distributed Systems")
-                .dateApparition(sdf.parse("2023-04-10"))
+                .dateApparition(LocalDate.parse("2023-04-10"))
                 .lien("https://publisher.com/book/chapter5")
                 .sourcePdf("books/chapters/design_patterns_ch5.pdf")
                 .build();
@@ -89,7 +90,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub7 = Publication.builder()
                 .type("chapitre de livre")
                 .titre("Big Data Analytics: Fundamentals and Applications")
-                .dateApparition(sdf.parse("2024-01-05"))
+                .dateApparition(LocalDate.parse("2024-01-05"))
                 .lien("https://publisher.com/book/chapter3")
                 .sourcePdf("books/chapters/bigdata_ch3.pdf")
                 .build();
@@ -99,7 +100,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub8 = Publication.builder()
                 .type("livre")
                 .titre("Modern Software Engineering Practices")
-                .dateApparition(sdf.parse("2023-11-30"))
+                .dateApparition(LocalDate.parse("2023-11-30"))
                 .lien("https://publisher.com/books/modern-se")
                 .sourcePdf("books/modern_se_practices.pdf")
                 .build();
@@ -108,7 +109,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub9 = Publication.builder()
                 .type("livre")
                 .titre("Artificial Intelligence and Ethics")
-                .dateApparition(sdf.parse("2024-05-15"))
+                .dateApparition(LocalDate.parse("2024-05-15"))
                 .lien("https://publisher.com/books/ai-ethics")
                 .sourcePdf("books/ai_ethics.pdf")
                 .build();
@@ -118,7 +119,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub10 = Publication.builder()
                 .type("poster")
                 .titre("Blockchain Technology in Healthcare")
-                .dateApparition(sdf.parse("2023-08-20"))
+                .dateApparition(LocalDate.parse("2023-08-20"))
                 .lien("https://poster-session.org/blockchain-health")
                 .sourcePdf("posters/blockchain_healthcare.pdf")
                 .build();
@@ -127,7 +128,7 @@ public class PublicationServiceApplication implements CommandLineRunner {
         Publication pub11 = Publication.builder()
                 .type("poster")
                 .titre("IoT Security Framework Proposal")
-                .dateApparition(sdf.parse("2024-04-12"))
+                .dateApparition(LocalDate.parse("2024-04-12"))
                 .lien("https://poster-session.org/iot-security")
                 .sourcePdf("posters/iot_security_framework.pdf")
                 .build();
@@ -136,15 +137,20 @@ public class PublicationServiceApplication implements CommandLineRunner {
         System.out.println("✓ " + publicationRepository.count() + " publications créées avec succès!");
         
         // Afficher quelques statistiques
+        // Assurez-vous que la méthode countByType existe dans votre interface PublicationRepository !
         System.out.println("\n===== STATISTIQUES =====");
-        System.out.println("Articles de journal : " + publicationRepository.countByType("article de journal"));
-        System.out.println("Manifestations : " + publicationRepository.countByType("manifestation"));
-        System.out.println("Chapitres de livre : " + publicationRepository.countByType("chapitre de livre"));
-        System.out.println("Livres : " + publicationRepository.countByType("livre"));
-        System.out.println("Posters : " + publicationRepository.countByType("poster"));
-        
+        try {
+            System.out.println("Articles de journal : " + publicationRepository.countByType("article de journal"));
+            System.out.println("Manifestations : " + publicationRepository.countByType("manifestation"));
+            System.out.println("Chapitres de livre : " + publicationRepository.countByType("chapitre de livre"));
+            System.out.println("Livres : " + publicationRepository.countByType("livre"));
+            System.out.println("Posters : " + publicationRepository.countByType("poster"));
+        } catch (Exception e) {
+            System.out.println("NB: Assurez-vous d'avoir ajouté 'long countByType(String type);' dans votre interface Repository.");
+        }
+
         System.out.println("\n========== APPLICATION PRÊTE ==========");
-        System.out.println("API REST disponible sur : http://localhost:8092/api");
+        System.out.println("API REST disponible sur : http://localhost:8092/api"); // Vérifiez votre port
         System.out.println("Console H2 disponible sur : http://localhost:8092/h2-console");
         System.out.println("========================================\n");
     }

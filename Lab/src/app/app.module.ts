@@ -38,8 +38,10 @@ import { PublicationComponent } from './publication/publication.component';
 import { ToolComponent } from './tool/tool.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select'; // AJOUTÉ ICI
-import { MatTooltipModule } from '@angular/material/tooltip'; // AJOUTÉ ICI
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ModalOutilComponent } from './modal-outil/modal-outil.component';
+import { ModalPublicationComponent } from './modal-publication/modal-publication.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { MatTooltipModule } from '@angular/material/tooltip'; // AJOUTÉ ICI
     ModalEvtComponent,
     DashboardComponent,
     PublicationComponent,
-    ToolComponent
+    ToolComponent,
+    ModalOutilComponent,
+    ModalPublicationComponent
   ],
   imports: [
     BrowserModule,

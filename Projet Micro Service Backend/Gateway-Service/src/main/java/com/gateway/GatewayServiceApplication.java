@@ -60,6 +60,11 @@ public class GatewayServiceApplication {
                     .path("/PUBLICATION-SERVICE/**")
                     .filters(f -> f.stripPrefix(1))
                     .uri("lb://PUBLICATION-SERVICE"))
+            
+            .route("outil-service", r -> r
+                    .path("/OUTIL-SERVICE/**")
+                    .filters(f -> f.stripPrefix(1))
+                    .uri("lb://OUTIL-SERVICE"))
                 .build();
     }
 }

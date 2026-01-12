@@ -39,9 +39,9 @@ export class PublicationService {
         id: p.id,
         titre: p.titre,
         type: p.type,
-        dateApparition: p.date,  // map backend date → frontend dateApparition
+        dateApparition: p.dateApparition || p.date || null,
         lien: p.lien,
-        source: p.sourcePdf       // map backend sourcePdf → frontend source
+        source: p.source || p.sourcePdf || null
       }));
     })
   );
@@ -49,15 +49,57 @@ export class PublicationService {
 
 
   savePublication(publication: Publication): Observable<Publication> {
-    return this.httpClient.post<Publication>(this.PUBLICATION_API, publication);
+    const payload: any = { ...publication };
+    // ensure date is sent as yyyy-MM-dd
+    if (payload.dateApparition) {
+      payload.dateApparition = this.formatDateToBackend(payload.dateApparition);
+    }
+    // be tolerant: include both field names if backend expects sourcePdf
+    if (payload.source) {
+      payload.sourcePdf = payload.source;
+      payload.source = payload.source;
+    }
+    delete payload.id; // remove id for POST
+    console.log('POST payload ->', payload);
+    return this.httpClient.post<Publication>(this.PUBLICATION_API, payload);
   }
 
   getPublicationById(id: number): Observable<Publication> {
-    return this.httpClient.get<Publication>(`${this.PUBLICATION_API}/${id}`);
+    return this.httpClient.get<any>(`${this.PUBLICATION_API}/${id}`).pipe(
+      map((p: any) => ({
+        id: p.id,
+        titre: p.titre,
+        type: p.type,
+        dateApparition: p.dateApparition || p.date || null,
+        lien: p.lien,
+        source: p.source || p.sourcePdf || null
+      }))
+    );
   }
 
   updatePublication(id: number, publication: Publication): Observable<Publication> {
-    return this.httpClient.put<Publication>(`${this.PUBLICATION_API}/${id}`, publication);
+    const payload: any = { ...publication };
+    if (payload.dateApparition) {
+      payload.dateApparition = this.formatDateToBackend(payload.dateApparition);
+    }
+    if (payload.source) {
+      payload.sourcePdf = payload.source;
+      payload.source = payload.source;
+    }
+    console.log(`PUT payload for id=${id} ->`, payload);
+    return this.httpClient.put<Publication>(`${this.PUBLICATION_API}/${id}`, payload);
+  }
+
+  private formatDateToBackend(date: any): string | null {
+    if (!date) return null;
+    if (typeof date === 'string') return date;
+    if (date instanceof Date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+    return String(date);
   }
 
   deletePublication(id: number): Observable<void> {

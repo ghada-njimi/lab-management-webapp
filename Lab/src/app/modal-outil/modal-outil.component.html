@@ -1,0 +1,25 @@
+<mat-dialog-content [formGroup]="form">
+  
+  <mat-form-field>
+    <mat-label>Source</mat-label>
+    <input matInput 
+           placeholder="Source de l'outil"
+           formControlName="source">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choisir une date">
+    <mat-hint>JJ/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="save()">
+    {{isEditMode ? 'Modifier' : 'Créer'}}
+  </button>
+</mat-dialog-actions>

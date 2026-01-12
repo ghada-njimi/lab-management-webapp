@@ -4,6 +4,26 @@
   min-height: calc(100vh - 180px);
 }
 
+/* Header layout matching events template */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.add-button {
+  min-width: 140px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-button .btn-text {
+  font-weight: 500;
+}
+
 .publications-header {
   display: flex;
   justify-content: space-between;
@@ -41,6 +61,11 @@
 
 .search-field {
   flex: 1;
+}
+
+/* ensure search field full width on desktop */
+mat-form-field.search-field {
+  width: 360px;
 }
 
 .filters-section {
