@@ -12,26 +12,50 @@
   margin-bottom: 16px;
 }
 
+/* BOUTON AJOUTER - NOUVEL OUTIL */
 .add-button {
   min-width: 140px;
   height: 40px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  background-color: lch(66.82% 55.12 161.3);
-  color: white;
-  border: none;
+  background-color: lch(66.82% 55.12 161.3) !important; /* Couleur spécifique */
+  color: white !important; /* Texte blanc */
+  border: none !important;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 14px;
   padding: 8px 16px;
   transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
 }
 
 .add-button:hover {
-  background-color: lch(56.82% 55.12 161.3);
+  background-color: lch(56.82% 55.12 161.3) !important; /* Version plus foncée au survol */
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
   transform: translateY(-2px);
+}
+
+.add-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+}
+
+.add-button:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Icône dans le bouton */
+.add-button mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
 }
 
 .publications-header {
@@ -104,6 +128,24 @@ mat-form-field.search-field {
   gap: 15px;
 }
 
+/* Boutons de filtre avec la même couleur */
+.filter-buttons button {
+  padding: 8px 16px;
+  background-color: lch(66.82% 55.12 161.3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.25s ease;
+}
+
+.filter-buttons button:hover {
+  background-color: lch(56.82% 55.12 161.3);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+}
+
 .form-section {
   background: white;
   padding: 25px;
@@ -138,6 +180,28 @@ mat-form-field.search-field {
   display: flex;
   gap: 15px;
   justify-content: flex-end;
+}
+
+/* Bouton Save avec la même couleur */
+.form-actions button[type="submit"],
+.form-actions .save-button {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+  border: none !important;
+  min-width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 20px;
+  transition: all 0.25s ease;
+}
+
+.form-actions button[type="submit"]:hover,
+.form-actions .save-button:hover {
+  background-color: lch(56.82% 55.12 161.3) !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
 }
 
 .list-section {
@@ -208,8 +272,8 @@ mat-form-field.search-field {
 }
 
 .page-numbers button.active {
-  background-color: #2196f3;
-  color: white;
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
 }
 
 .publications-table-container {
@@ -302,4 +366,22 @@ button[mat-raised-button] {
 mat-form-field.required .mat-form-field-label::after {
   content: " *";
   color: #f44336;
+}
+
+/* Règles supplémentaires pour garantir la couleur */
+:host ::ng-deep .add-button.mat-raised-button {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+}
+
+:host ::ng-deep .add-button.mat-raised-button .mat-button-wrapper {
+  color: white !important;
+}
+
+/* Bouton spécifique pour "Nouvel outil" */
+.new-tool-button,
+.btn-new-tool {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+  border: none !important;
 }
