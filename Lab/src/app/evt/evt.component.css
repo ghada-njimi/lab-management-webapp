@@ -12,16 +12,127 @@
   margin-bottom: 16px;
 }
 
+/* BOUTON "NOUVELLE PUBLICATION" - Comme l'image */
+.add-publication-btn {
+  min-width: 160px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: lch(66.82% 55.12 161.3);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 20px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+}
+
+.add-publication-btn:hover {
+  background-color: lch(56.82% 55.12 161.3);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+}
+
+.add-publication-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+}
+
+.add-publication-btn .plus-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.add-publication-btn .btn-text {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+/* Bouton Add (version alternative) */
 .add-button {
   min-width: 140px;
   height: 40px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  background-color: lch(66.82% 55.12 161.3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: all 0.25s ease;
+}
+
+.add-button:hover {
+  background-color: lch(56.82% 55.12 161.3);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
 }
 
 .add-button .btn-text {
   font-weight: 500;
+}
+
+/* BOUTON SAVE - même couleur que Add */
+.save-button,
+button[type="submit"],
+.form-actions button:first-child {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+  border: none !important;
+  min-width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 20px;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.save-button:hover,
+button[type="submit"]:hover,
+.form-actions button:first-child:hover {
+  background-color: lch(56.82% 55.12 161.3) !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Bouton Cancel */
+.cancel-button,
+.form-actions button:last-child {
+  background-color: #6c757d !important;
+  color: white !important;
+  border: none !important;
+  min-width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 20px;
+  transition: all 0.25s ease;
+}
+
+.cancel-button:hover,
+.form-actions button:last-child:hover {
+  background-color: #5a6268 !important;
+  box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
 }
 
 .publications-header {
@@ -79,7 +190,7 @@ mat-form-field.search-field {
 .filters-section h3 {
   margin-top: 0;
   margin-bottom: 20px;
-  color: #34495e;
+  color: #8fa4b9;
 }
 
 .filter-grid {
@@ -92,6 +203,23 @@ mat-form-field.search-field {
 .filter-buttons {
   display: flex;
   gap: 15px;
+}
+
+.filter-buttons button {
+  padding: 8px 16px;
+  background-color: lch(66.82% 55.12 161.3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.25s ease;
+}
+
+.filter-buttons button:hover {
+  background-color: lch(56.82% 55.12 161.3);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
 }
 
 .form-section {
@@ -128,6 +256,21 @@ mat-form-field.search-field {
   display: flex;
   gap: 15px;
   justify-content: flex-end;
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
+}
+
+/* Style spécifique pour les boutons dans form-actions */
+.form-actions .save-button,
+.form-actions button[type="submit"] {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.form-actions .cancel-button {
+  background-color: #6c757d !important;
+  color: white !important;
 }
 
 .list-section {
@@ -198,7 +341,7 @@ mat-form-field.search-field {
 }
 
 .page-numbers button.active {
-  background-color: #2196f3;
+  background-color: lch(66.82% 55.12 161.3);
   color: white;
 }
 
@@ -262,6 +405,14 @@ mat-form-field.search-field {
   .form-grid {
     grid-template-columns: 1fr;
   }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
 }
 
 /* Hover effects */
@@ -272,11 +423,20 @@ mat-form-field.search-field {
 
 /* Style pour les liens */
 a[mat-icon-button] {
-  color: #1976d2;
+  color: lch(66.82% 55.12 161.3);
 }
 
 a[mat-icon-button]:hover {
-  background-color: rgba(25, 118, 210, 0.1);
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Style pour les boutons icon-button avec color="primary" */
+button[mat-icon-button][color="primary"] {
+  color: lch(66.82% 55.12 161.3) !important;
+}
+
+button[mat-icon-button][color="primary"]:hover {
+  background-color: rgba(99, 102, 241, 0.1) !important;
 }
 
 /* Style pour les boutons */
@@ -284,8 +444,63 @@ button[mat-raised-button] {
   min-width: 120px;
 }
 
+button[mat-raised-button][color="primary"] {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+}
+
+button[mat-raised-button][color="primary"]:hover {
+  background-color: lch(56.82% 55.12 161.3) !important;
+}
+
 /* Style pour les champs obligatoires */
 mat-form-field.required .mat-form-field-label::after {
   content: " *";
   color: #f44336;
+}
+
+/* Règles spécifiques pour Angular Material */
+.mat-raised-button.save-button,
+button.mat-raised-button[type="submit"] {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+}
+
+.mat-raised-button.cancel-button {
+  background-color: #6c757d !important;
+  color: white !important;
+}
+
+/* État disabled */
+.save-button:disabled,
+button[type="submit"]:disabled,
+.form-actions button:first-child:disabled,
+.add-publication-btn:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Pour les icônes dans les boutons */
+.save-button mat-icon,
+.add-button mat-icon,
+.add-publication-btn mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+/* Version avec Material Design */
+.mat-raised-button.add-publication-btn {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2) !important;
+}
+
+.mat-raised-button.add-publication-btn:hover {
+  background-color: lch(56.82% 55.12 161.3) !important;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3) !important;
 }

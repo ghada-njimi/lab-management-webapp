@@ -17,12 +17,17 @@ export class DashboardComponent  {
   Nb_Articles: number = 0;
   chartData: ChartDataset[] = [
     {
-      // ⤵️ Add these
-      label: '$ in millions',
-      data: [ 1551, 1688, 1800, 1895, 2124, 2124 ]
+      label: 'Nombre d\'Étudiants',
+      data: [ 150, 175, 190, 210, 225, 240 ],
+      borderColor: '#10b981',
+      backgroundColor: 'rgba(16, 185, 129, 0.1)',
+      pointBackgroundColor: '#10b981',
+      pointBorderColor: '#10b981',
+      pointRadius: 5,
+      tension: 0.3
     }
   ];
-  chartLabels: string[] = ['A','B','C','D','E','F'];
+  chartLabels: string[] = ['12 Pub', '18 Pub', '25 Pub', '32 Pub', '40 Pub', '45 Pub'];
   chartOptions: ChartOptions = {};
 
   // other code

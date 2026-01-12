@@ -18,10 +18,30 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  background-color: lch(66.82% 55.12 161.3) !important; /* FORCÉ - couleur spécifique */
+  color: white !important; /* FORCÉ - texte blanc */
+  border: none !important;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: all 0.25s ease;
 }
 
-.add-button .btn-text {
-  font-weight: 500;
+.add-button:hover {
+  background-color: lch(56.82% 55.12 161.3) !important; /* FORCÉ au survol */
+  color: white !important; /* FORCÉ - texte blanc au survol */
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+}
+
+/* État désactivé */
+.add-button:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .publications-header {
@@ -94,6 +114,34 @@ mat-form-field.search-field {
   gap: 15px;
 }
 
+.filter-buttons button {
+  padding: 8px 16px;
+  background-color: white;
+  color: lch(66.82% 55.12 161.3);
+  border: 2px solid lch(66.82% 55.12 161.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.25s ease;
+}
+
+.filter-buttons button:hover {
+  background-color: lch(66.82% 55.12 161.3);
+  color: white;
+}
+
+/* Style spécifique pour le bouton Filtrer si vous voulez aussi cette couleur */
+.filter-buttons button.filter-button {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+  border-color: lch(66.82% 55.12 161.3) !important;
+}
+
+.filter-buttons button.filter-button:hover {
+  background-color: lch(56.82% 55.12 161.3) !important;
+}
+
 .form-section {
   background: white;
   padding: 25px;
@@ -128,6 +176,22 @@ mat-form-field.search-field {
   display: flex;
   gap: 15px;
   justify-content: flex-end;
+}
+
+/* Style pour les boutons du formulaire */
+.form-actions button[type="submit"] {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.form-actions button[type="submit"]:hover {
+  background-color: lch(56.82% 55.12 161.3) !important;
+}
+
+.form-actions button[type="button"] {
+  background-color: #6c757d !important;
+  color: white !important;
 }
 
 .list-section {
@@ -198,8 +262,8 @@ mat-form-field.search-field {
 }
 
 .page-numbers button.active {
-  background-color: #2196f3;
-  color: white;
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
 }
 
 .publications-table-container {
@@ -232,6 +296,15 @@ mat-form-field.search-field {
 .actions-cell {
   display: flex;
   gap: 5px;
+}
+
+/* Bouton d'action dans le tableau - même couleur */
+.edit-button {
+  color: lch(66.82% 55.12 161.3) !important;
+}
+
+.delete-button {
+  color: #dc3545 !important;
 }
 
 /* Responsive */
@@ -272,11 +345,11 @@ mat-form-field.search-field {
 
 /* Style pour les liens */
 a[mat-icon-button] {
-  color: #1976d2;
+  color: lch(66.82% 55.12 161.3);
 }
 
 a[mat-icon-button]:hover {
-  background-color: rgba(25, 118, 210, 0.1);
+  background-color: rgba(99, 102, 241, 0.1);
 }
 
 /* Style pour les boutons */
@@ -288,4 +361,33 @@ button[mat-raised-button] {
 mat-form-field.required .mat-form-field-label::after {
   content: " *";
   color: #f44336;
+}
+
+/* Règles supplémentaires pour forcer la couleur spécifique */
+.mat-raised-button.add-button,
+button.add-button,
+.button-add-publication {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+}
+
+/* Pour le bouton avec Material */
+button.mat-raised-button.add-button {
+  background-color: lch(66.82% 55.12 161.3) !important;
+}
+
+/* Pour s'assurer que la couleur lch soit toujours appliquée */
+:host ::ng-deep .add-button.mat-raised-button {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+}
+
+:host ::ng-deep .add-button.mat-raised-button:hover {
+  background-color: lch(56.82% 55.12 161.3) !important;
+  color: white !important;
+}
+
+/* Si vous utilisez Angular Material, cette règle peut aider */
+::ng-deep .mat-raised-button.add-button .mat-button-wrapper {
+  color: white !important;
 }

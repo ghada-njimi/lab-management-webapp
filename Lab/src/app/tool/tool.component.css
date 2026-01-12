@@ -18,10 +18,20 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  background-color: lch(66.82% 55.12 161.3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: all 0.25s ease;
 }
 
-.add-button .btn-text {
-  font-weight: 500;
+.add-button:hover {
+  background-color: lch(56.82% 55.12 161.3);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
 }
 
 .publications-header {
@@ -272,11 +282,15 @@ mat-form-field.search-field {
 
 /* Style pour les liens */
 a[mat-icon-button] {
-  color: #1976d2;
+  color: lch(66.82% 55.12 161.3);
 }
 
 a[mat-icon-button]:hover {
-  background-color: rgba(25, 118, 210, 0.1);
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+button[mat-icon-button][color="primary"] {
+  color: lch(66.82% 55.12 161.3) !important;
 }
 
 /* Style pour les boutons */

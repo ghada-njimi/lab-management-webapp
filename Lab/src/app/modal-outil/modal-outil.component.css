@@ -11,3 +11,13 @@ mat-dialog-actions {
   margin-top: 20px;
   gap: 10px;
 }
+
+/* Style pour le bouton Save */
+button[mat-raised-button][color="primary"] {
+  background-color: lch(66.82% 55.12 161.3) !important;
+  color: white !important;
+}
+
+button[mat-raised-button][color="primary"]:hover {
+  background-color: lch(56.82% 55.12 161.3) !important;
+}
